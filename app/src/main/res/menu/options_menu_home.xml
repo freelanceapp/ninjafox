@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_NewTab"
+        android:title="New tab" />
+
+    <item
+        android:id="@+id/menu_NewIncongnitoTab"
+        android:title="New incognito tab" />
+
+    <item
+        android:id="@+id/menu_FindinPage"
+        android:title="Find in page" />
+
+    <item
+        android:id="@+id/menu_BookMarks"
+        android:title="Bookmarks" />
+
+    <item
+        android:id="@+id/menu_History"
+        android:title="History" />
+
+    <item
+        android:id="@+id/menu_DownLoads"
+        android:title="Downloads" />
+
+
+
+    <item
+        android:id="@+id/menu_Settings"
+        android:title="Settings" />
+
+
+
+</menu>
