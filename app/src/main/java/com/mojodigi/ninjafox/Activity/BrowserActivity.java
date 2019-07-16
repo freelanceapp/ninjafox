@@ -96,7 +96,7 @@ import java.util.TimerTask;
 /* Written by  Takendra  */
 
 public class BrowserActivity extends Activity implements BrowserController {
-    // Sync with jmmToast.show() 2000ms delay
+
     private static final int DOUBLE_TAPS_QUIT_DEFAULT = 2000;
 
     private SwitcherPanel switcherPanel;
@@ -1519,7 +1519,11 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         final List<String> list = new ArrayList<>();
         list.add(getString(R.string.main_menu_new_tab));
-        list.add(getString(R.string.main_menu_copy_link));
+
+
+      //list.add(getString(R.string.main_menu_copy_link));      // uncomment it to  add copy options;
+
+
         if (result != null && (result.getType() == WebView.HitTestResult.IMAGE_TYPE || result.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)) {
             list.add(getString(R.string.main_menu_save));
         }
