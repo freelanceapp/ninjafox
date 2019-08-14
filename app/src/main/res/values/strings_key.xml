@@ -85,6 +85,11 @@
         SP_CLEAR_PASSWORDS_9
     </string>
 
+    <!--dowaload settings-->
+    <string name="sp_download" translatable="false">
+        SP_DOWNLOAD
+    </string>
+
     <!-- Readability -->
     <string name="sp_readability">
         SP_READABILITY_9
@@ -95,5 +100,7 @@
     <string name="sp_readability_background">
         SP_READABILITY_BACKGROUND_9
     </string>
+<!--sets the flag to ignore history if incog Mode is enabled for tab-->
+    <string translatable="false" name="sp_add_history">SP_ADD_HISTORY</string>
 
 </resources>

@@ -15,7 +15,7 @@ import com.mojodigi.ninjafox.Browser.AdBlock;
 import com.mojodigi.ninjafox.Database.RecordAction;
 import com.mojodigi.ninjafox.R;
 
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.View.WhitelistAdapter;
 import com.mojodigi.ninjafox.View.jmmToast;
 
@@ -55,7 +55,7 @@ public class WhitelistActivity extends Activity {
                 String domain = editText.getText().toString().trim();
                 if (domain.isEmpty()) {
                     jmmToast.show(WhitelistActivity.this, R.string.toast_input_empty);
-                } else if (!BrowserUnit.isURL(domain)) {
+                } else if (!BrowserUtility.isURL(domain)) {
                     jmmToast.show(WhitelistActivity.this, R.string.toast_invalid_domain);
                 } else {
                     RecordAction action = new RecordAction(WhitelistActivity.this);

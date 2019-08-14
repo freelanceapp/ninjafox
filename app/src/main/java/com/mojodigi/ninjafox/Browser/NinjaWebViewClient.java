@@ -14,6 +14,7 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
@@ -24,11 +25,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
-import com.mojodigi.ninjafox.Unit.IntentUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
+import com.mojodigi.ninjafox.Unit.IntentUtility;
 import com.mojodigi.ninjafox.View.jmmWebView;
 
 import java.io.ByteArrayInputStream;
+import java.net.CookieStore;
 
 public class NinjaWebViewClient extends WebViewClient {
     private jmmWebView customWebView;
@@ -85,16 +87,22 @@ public class NinjaWebViewClient extends WebViewClient {
         } else {
             customWebView.postInvalidate();
         }
+
+
+        String cookies = CookieManager.getInstance().getCookie(url);
+        System.out.print(""+cookies);
+
+
     }
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (url.startsWith(BrowserUnit.URL_SCHEME_MAIL_TO)) {
-            Intent intent = IntentUnit.getEmailIntent(MailTo.parse(url));
+        if (url.startsWith(BrowserUtility.URL_SCHEME_MAIL_TO)) {
+            Intent intent = IntentUtility.getEmailIntent(MailTo.parse(url));
             context.startActivity(intent);
             view.reload();
             return true;
-        } else if (url.startsWith(BrowserUnit.URL_SCHEME_INTENT)) {
+        } else if (url.startsWith(BrowserUtility.URL_SCHEME_INTENT)) {
             Intent intent;
             try {
                 intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
@@ -112,11 +120,12 @@ public class NinjaWebViewClient extends WebViewClient {
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         if (enable && !white && adBlock.isAd(url)) {
             return new WebResourceResponse(
-                    BrowserUnit.MIME_TYPE_TEXT_PLAIN,
-                    BrowserUnit.URL_ENCODING,
+                    BrowserUtility.MIME_TYPE_TEXT_PLAIN,
+                    BrowserUtility.URL_ENCODING,
                     new ByteArrayInputStream("".getBytes())
             );
         }
+
 
         return super.shouldInterceptRequest(view, url);
     }
@@ -126,8 +135,8 @@ public class NinjaWebViewClient extends WebViewClient {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (enable && !white && adBlock.isAd(request.getUrl().toString())) {
                 return new WebResourceResponse(
-                        BrowserUnit.MIME_TYPE_TEXT_PLAIN,
-                        BrowserUnit.URL_ENCODING,
+                        BrowserUtility.MIME_TYPE_TEXT_PLAIN,
+                        BrowserUtility.URL_ENCODING,
                         new ByteArrayInputStream("".getBytes())
                 );
             }
@@ -138,7 +147,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onFormResubmission(WebView view, @NonNull final Message dontResend, final Message resend) {
-        Context holder = IntentUnit.getContext();
+        Context holder = IntentUtility.getContext();
         if (holder == null || !(holder instanceof Activity)) {
             return;
         }
@@ -165,7 +174,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onReceivedSslError(WebView view, @NonNull final SslErrorHandler handler, SslError error) {
-        Context holder = IntentUnit.getContext();
+        Context holder = IntentUtility.getContext();
         if (holder == null || !(holder instanceof Activity)) {
             return;
         }
@@ -197,7 +206,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onReceivedHttpAuthRequest(WebView view, @NonNull final HttpAuthHandler handler, String host, String realm) {
-        Context holder = IntentUnit.getContext();
+        Context holder = IntentUtility.getContext();
         if (holder == null || !(holder instanceof Activity)) {
             return;
         }

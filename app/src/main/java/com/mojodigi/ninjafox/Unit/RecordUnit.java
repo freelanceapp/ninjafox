@@ -4,6 +4,7 @@ package com.mojodigi.ninjafox.Unit;
 import com.mojodigi.ninjafox.Database.Record;
 
 public class RecordUnit {
+
     public static final String TABLE_BOOKMARKS = "BOOKMARKS";
     public static final String TABLE_HISTORY = "HISTORY";
     public static final String TABLE_WHITELIST = "WHITELIST";

@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 
 import com.mojodigi.ninjafox.R;
 
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.Unit.ViewUnit;
 import com.mojodigi.ninjafox.View.jmmToast;
 import com.mojodigi.ninjafox.View.jmmWebView;
@@ -48,7 +48,7 @@ public class ScreenshotTask extends AsyncTask<Void, Void, Boolean> {
     protected Boolean doInBackground(Void... params) {
         try {
             Bitmap bitmap = ViewUnit.capture(webView, windowWidth, contentHeight, false, Bitmap.Config.ARGB_8888);
-            path = BrowserUnit.screenshot(context, bitmap, title);
+            path = BrowserUtility.screenshot(context, bitmap, title);
         } catch (Exception e) {
             path = null;
         }

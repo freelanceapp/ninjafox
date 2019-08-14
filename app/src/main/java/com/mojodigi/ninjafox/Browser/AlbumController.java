@@ -19,4 +19,7 @@ public interface AlbumController {
     void activate();
 
     void deactivate();
+
+    void setIsInCogTab(boolean flag);
+    boolean getIsInCogTab();
 }

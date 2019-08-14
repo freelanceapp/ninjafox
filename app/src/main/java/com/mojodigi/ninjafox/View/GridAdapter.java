@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.mojodigi.ninjafox.R;
 
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.Unit.ViewUnit;
-import com.mojodigi.ninjafox.org.askerov.dynamicgrid.BaseDynamicGridAdapter;
+import com.mojodigi.ninjafox.org.developer.dynamicgrid.BaseDynamicGridAdapter;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class GridAdapter extends BaseDynamicGridAdapter {
 
         GridItem item = list.get(position);
         holder.title.setText(item.getTitle());
-        holder.cover.setImageBitmap(BrowserUnit.file2Bitmap(context, item.getFilename()));
+        holder.cover.setImageBitmap(BrowserUtility.file2Bitmap(context, item.getFilename()));
         ViewUnit.setElevation(view, context.getResources().getDimensionPixelSize(R.dimen.elevation_1dp));
 
         return view;

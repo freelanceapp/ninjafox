@@ -3,21 +3,28 @@
     package="com.mojodigi.ninjafox">
 
     <!-- Permission -->
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
 
     <!-- Application -->
     <application android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher_round"
         android:allowBackup="true"
         android:enabled="true"
         android:largeHeap="true">
 
         <!-- HolderActivity -->
+        <!--android:theme="@android:style/Theme.NoDisplay"-->
+        <!--android:theme="@style/BrowserActivityTheme">-->  <!-- works fine  with  holderActivity-->
+
         <activity android:name="com.mojodigi.ninjafox.Activity.HolderActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -37,9 +44,9 @@
             android:icon="@drawable/ic_launcher">
         </service>
 
-        <!-- BrowserActivity -->
+        <!-- MainActivity -->
 
-        <activity android:name="com.mojodigi.ninjafox.Activity.BrowserActivity"
+        <activity android:name="com.mojodigi.ninjafox.Activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -55,23 +62,19 @@
                 android:resource="@xml/searchable">
             </meta-data>
         </activity>
-
-
-
-        <!-- ReadabilityActivity -->
-        <activity android:name="com.mojodigi.ninjafox.Activity.ReadabilityActivity"
-            android:label="@string/readability_label"
-            android:theme="@style/ReadabilityActivityTheme">
-        </activity>
-
         <!-- SettingActivity -->
         <activity android:name="com.mojodigi.ninjafox.Activity.SettingActivity"
-            android:label="@string/setting_label"
-            android:theme="@style/SettingActivityTheme">
+            android:theme="@style/SettingActivityTheme"
+            android:label="@string/setting_label">
+        </activity>
+
+        <activity android:name="com.mojodigi.ninjafox.Activity.DownLoadSettingActivity"
+            android:theme="@style/SettingActivityTheme"
+            android:label="@string/download_settings_label">
         </activity>
 
         <!-- WhitelistActivity -->
-        <activity android:name="com.mojodigi.ninjafox.WhitelistActivity"
+        <activity android:name="com.mojodigi.ninjafox.Activity.WhitelistActivity"
             android:label="@string/whitelist_label"
             android:theme="@style/WhitelistActivityTheme">
         </activity>

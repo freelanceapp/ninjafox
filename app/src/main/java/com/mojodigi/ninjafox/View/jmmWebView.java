@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.location.SettingInjectorService;
 import android.net.MailTo;
 import android.os.Build;
 import android.os.Handler;
@@ -22,15 +23,16 @@ import com.mojodigi.ninjafox.Browser.AdBlock;
 import com.mojodigi.ninjafox.Browser.AlbumController;
 import com.mojodigi.ninjafox.Browser.BrowserController;
 import com.mojodigi.ninjafox.Browser.NinjaClickHandler;
-import com.mojodigi.ninjafox.Browser.NinjaDownloadListener;
+import com.mojodigi.ninjafox.Browser.jmmDownloadListener;
 import com.mojodigi.ninjafox.Browser.NinjaGestureListener;
 import com.mojodigi.ninjafox.Browser.NinjaWebChromeClient;
 import com.mojodigi.ninjafox.Browser.NinjaWebViewClient;
 import com.mojodigi.ninjafox.Database.Record;
 import com.mojodigi.ninjafox.Database.RecordAction;
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
-import com.mojodigi.ninjafox.Unit.IntentUnit;
+import com.mojodigi.ninjafox.SharedPrefs.SharedPreferenceUtil;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
+import com.mojodigi.ninjafox.Unit.IntentUtility;
 import com.mojodigi.ninjafox.Unit.ViewUnit;
 
 
@@ -46,8 +48,10 @@ public class jmmWebView extends WebView implements AlbumController {
             0, 0, 0, 1.0f, 0     // Alpha
     };
 
+
+
     private Context context;
-    private int flag = BrowserUnit.FLAG_NINJA;
+    private int flag = BrowserUtility.FLAG_NINJA;
     private int dimen144dp;
     private int dimen108dp;
     private int animTime;
@@ -55,11 +59,13 @@ public class jmmWebView extends WebView implements AlbumController {
     private Album album;
     private NinjaWebViewClient webViewClient;
     private NinjaWebChromeClient webChromeClient;
-    private NinjaDownloadListener downloadListener;
+    private jmmDownloadListener downloadListener;
     private NinjaClickHandler clickHandler;
     private GestureDetector gestureDetector;
 
     private AdBlock adBlock;
+    private boolean isIncogTab;
+
     public AdBlock getAdBlock() {
         return adBlock;
     }
@@ -70,6 +76,7 @@ public class jmmWebView extends WebView implements AlbumController {
     }
 
     private String userAgentOriginal;
+    SharedPreferenceUtil prefs;
     public String getUserAgentOriginal() {
         return userAgentOriginal;
     }
@@ -96,9 +103,11 @@ public class jmmWebView extends WebView implements AlbumController {
         this.album = new Album(this.context, this, this.browserController);
         this.webViewClient = new NinjaWebViewClient(this);
         this.webChromeClient = new NinjaWebChromeClient(this);
-        this.downloadListener = new NinjaDownloadListener(this.context);
+        this.downloadListener = new jmmDownloadListener(this.context);
         this.clickHandler = new NinjaClickHandler(this);
         this.gestureDetector = new GestureDetector(context, new NinjaGestureListener(this));
+
+        prefs=new SharedPreferenceUtil(context);
 
         initWebView();
         initWebSettings();
@@ -156,7 +165,7 @@ public class jmmWebView extends WebView implements AlbumController {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
 
-        webSettings.setDefaultTextEncodingName(BrowserUnit.URL_ENCODING);
+        webSettings.setDefaultTextEncodingName(BrowserUtility.URL_ENCODING);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webSettings.setLoadsImagesAutomatically(true);
         } else {
@@ -193,7 +202,7 @@ public class jmmWebView extends WebView implements AlbumController {
 
         int userAgent = Integer.valueOf(sp.getString(context.getString(R.string.sp_user_agent), "0"));
         if (userAgent == 1) {
-            webSettings.setUserAgentString(BrowserUnit.UA_DESKTOP);
+            webSettings.setUserAgentString(BrowserUtility.UA_DESKTOP);
         } else if (userAgent == 2) {
             webSettings.setUserAgentString(sp.getString(context.getString(R.string.sp_user_agent_custom), userAgentOriginal));
         } else {
@@ -260,14 +269,14 @@ public class jmmWebView extends WebView implements AlbumController {
             return;
         }
 
-        url = BrowserUnit.queryWrapper(context, url.trim());
-        if (url.startsWith(BrowserUnit.URL_SCHEME_MAIL_TO)) {
-            Intent intent = IntentUnit.getEmailIntent(MailTo.parse(url));
+        url = BrowserUtility.queryWrapper(context, url.trim());
+        if (url.startsWith(BrowserUtility.URL_SCHEME_MAIL_TO)) {
+            Intent intent = IntentUtility.getEmailIntent(MailTo.parse(url));
             context.startActivity(intent);
             reload();
 
             return;
-        } else if (url.startsWith(BrowserUnit.URL_SCHEME_INTENT)) {
+        } else if (url.startsWith(BrowserUtility.URL_SCHEME_INTENT)) {
             Intent intent;
             try {
                 intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
@@ -321,6 +330,19 @@ public class jmmWebView extends WebView implements AlbumController {
     }
 
     @Override
+    public void setIsInCogTab(boolean flag) {
+        this.isIncogTab=flag;
+        //album.setIncogTab(flag);
+
+    }
+
+    @Override
+    public boolean getIsInCogTab() {
+        return  isIncogTab;
+        //return  album.getIsIncogTab();
+    }
+
+    @Override
     public synchronized void activate() {
         requestFocus();
         foreground = true;
@@ -358,12 +380,17 @@ public class jmmWebView extends WebView implements AlbumController {
                 }
             }, animTime);
 
-            if (prepareRecord()) {
-                RecordAction action = new RecordAction(context);
-                action.open(true);
-                action.addHistory(new Record(getTitle(), getUrl(), System.currentTimeMillis()));
-                action.close();
-                browserController.updateAutoComplete();
+            boolean st=prefs.getBoolanValue(context.getResources().getString(R.string.sp_add_history), true);
+            if(prefs.getBoolanValue(context.getResources().getString(R.string.sp_add_history), true)) {
+                if (prepareRecord()) {
+                    RecordAction action = new RecordAction(context);
+                    action.open(true);
+                    // adds the url to history
+                    action.addHistory(new Record(getTitle(), getUrl(), System.currentTimeMillis()));
+                    jmmToast.show(context, "added to history");
+                    action.close();
+                    browserController.updateAutoComplete();
+                }
             }
         }
     }
@@ -398,7 +425,7 @@ public class jmmWebView extends WebView implements AlbumController {
     }
 
     public boolean isLoadFinish() {
-        return getProgress() >= BrowserUnit.PROGRESS_MAX;
+        return getProgress() >= BrowserUtility.PROGRESS_MAX;
     }
 
     public void onLongPress() {
@@ -417,9 +444,9 @@ public class jmmWebView extends WebView implements AlbumController {
                 || title.isEmpty()
                 || url == null
                 || url.isEmpty()
-                || url.startsWith(BrowserUnit.URL_SCHEME_ABOUT)
-                || url.startsWith(BrowserUnit.URL_SCHEME_MAIL_TO)
-                || url.startsWith(BrowserUnit.URL_SCHEME_INTENT)) {
+                || url.startsWith(BrowserUtility.URL_SCHEME_ABOUT)
+                || url.startsWith(BrowserUtility.URL_SCHEME_MAIL_TO)
+                || url.startsWith(BrowserUtility.URL_SCHEME_INTENT)) {
             return false;
         }
         return true;

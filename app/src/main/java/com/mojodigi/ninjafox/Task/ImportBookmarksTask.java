@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 
 import com.mojodigi.ninjafox.Fragment.SettingFragment;
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.View.jmmToast;
 
 import java.io.File;
@@ -38,7 +38,7 @@ public class ImportBookmarksTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
-        count = BrowserUnit.importBookmarks(context, file);
+        count = BrowserUtility.importBookmarks(context, file);
 
         if (isCancelled()) {
             return false;

@@ -11,18 +11,25 @@ import com.mojodigi.ninjafox.Browser.BrowserController;
 import com.mojodigi.ninjafox.R;
 
 
-
-
 public class jmmRelativeLayout extends RelativeLayout implements AlbumController {
     private Context context;
     private Album album;
     private int flag = 0;
-
+    private  boolean IsinCog;
     private BrowserController controller;
     public void setBrowserController(BrowserController controller) {
         this.controller = controller;
         this.album.setBrowserController(controller);
     }
+    //new code
+
+    public void setBrowserController(BrowserController controller,boolean isInCog) {
+        this.controller = controller;
+        this.album.setBrowserController(controller);
+        //this.album.setIncogTab(isInCog);
+    }
+
+    //new code
 
     public jmmRelativeLayout(Context context) {
         this(context, null);
@@ -74,14 +81,28 @@ public class jmmRelativeLayout extends RelativeLayout implements AlbumController
     public void setAlbumTitle(String title) {
         album.setAlbumTitle(title);
     }
+    @Override
+    public void setIsInCogTab(boolean flag) {
+       // album.setIncogTab(flag);
+        this.IsinCog=flag;
+    }
+
+    @Override
+    public boolean getIsInCogTab() {
+        return  IsinCog;
+        //return  album.getIsIncogTab();
+    }
 
     @Override
     public void activate() {
         album.activate();
+
     }
 
     @Override
     public void deactivate() {
         album.deactivate();
     }
+
+
 }

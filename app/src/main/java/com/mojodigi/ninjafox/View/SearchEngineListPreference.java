@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 
 
 public class SearchEngineListPreference extends ListPreference {
@@ -80,7 +80,7 @@ public class SearchEngineListPreference extends ListPreference {
                 if (domain.isEmpty()) {
                     jmmToast.show(getContext(), R.string.toast_input_empty);
                     return true;
-                } else if (!BrowserUnit.isURL(domain)) {
+                } else if (!BrowserUtility.isURL(domain)) {
                     jmmToast.show(getContext(), R.string.toast_invalid_domain);
                     return true;
                 } else {

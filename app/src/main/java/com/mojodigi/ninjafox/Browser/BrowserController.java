@@ -33,4 +33,9 @@ public interface BrowserController {
     boolean onHideCustomView();
 
     void onLongPress(String url);
+
+
+
+
+
 }

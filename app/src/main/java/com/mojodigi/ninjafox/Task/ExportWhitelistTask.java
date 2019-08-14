@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.View.jmmToast;
 
 
@@ -30,7 +30,7 @@ public class ExportWhitelistTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
-        path = BrowserUnit.exportWhitelist(context);
+        path = BrowserUtility.exportWhitelist(context);
 
         if (isCancelled()) {
             return false;

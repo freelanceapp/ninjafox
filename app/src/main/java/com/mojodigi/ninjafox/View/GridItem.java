@@ -2,6 +2,8 @@ package com.mojodigi.ninjafox.View;
 
 public class GridItem {
     private String title;
+
+
     public String getTitle() {
         return title;
     }

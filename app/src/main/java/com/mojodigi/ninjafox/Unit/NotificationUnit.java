@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
-import com.mojodigi.ninjafox.Activity.BrowserActivity;
+import com.mojodigi.ninjafox.Activity.MainActivity;
 import com.mojodigi.ninjafox.Browser.AlbumController;
 import com.mojodigi.ninjafox.Browser.BrowserContainer;
 import com.mojodigi.ninjafox.R;
@@ -49,7 +49,7 @@ public class NotificationUnit {
             builder.setColor(context.getResources().getColor(R.color.blue_500));
         }
 
-        Intent toActivity = new Intent(context, BrowserActivity.class);
+        Intent toActivity = new Intent(context, MainActivity.class);
         PendingIntent pin = PendingIntent.getActivity(context, 0, toActivity, 0);
         builder.setContentIntent(pin);
 

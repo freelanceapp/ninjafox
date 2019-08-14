@@ -3,85 +3,28 @@
 <com.mojodigi.ninjafox.View.SwitcherPanel
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/switcher_panel"
+        android:importantForAutofill="yes"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <LinearLayout android:id="@+id/switcher_view"
                   android:orientation="vertical"
+
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/blue_500">
               <!--           blue_300   -->
-        <FrameLayout android:id="@+id/switcher_header"
-                     android:layout_width="match_parent"
-                     android:layout_height="@dimen/layout_height_48dp"
-                     android:minHeight="@dimen/layout_height_48dp">
 
-            <ImageButton android:id="@+id/switcher_setting"
-                         android:contentDescription="@null"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="center|left"
-                         android:gravity="center"
-                         android:layout_margin="@dimen/layout_margin_8dp"
-                         android:visibility="gone"
-                         android:src="@drawable/setting_selector"
-                         android:background="@color/transparent">
-            </ImageButton>
-
-                   <!-- android:visibility="gone"   -->
-
-            <LinearLayout android:orientation="horizontal"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_gravity="center|right">
-
-                <ImageButton android:id="@+id/switcher_bookmarks"
-                             android:contentDescription="@null"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_margin="@dimen/layout_margin_8dp"
-                             android:visibility="gone"
-                             android:src="@drawable/bookmark_selector_light"
-                             android:background="@color/transparent">
-                </ImageButton>
-                 <!-- android:visibility="gone"  bookmark list -->
-
-
-                <ImageButton android:id="@+id/switcher_history"
-                             android:contentDescription="@null"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_margin="@dimen/layout_margin_8dp"
-                             android:visibility="gone"
-                             android:src="@drawable/history_selector"
-                             android:background="@color/transparent">
-                </ImageButton>
-
-                <!-- android:visibility="gone"-->
-
-                <ImageButton android:id="@+id/switcher_add"
-                             android:contentDescription="@null"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_margin="@dimen/layout_margin_8dp"
-                             android:visibility="gone"
-                             android:src="@drawable/add_selector"
-                             android:background="@color/transparent">
-                </ImageButton>
-                <!-- this adds  tab to app   android:visibility="gone" -->
-
-            </LinearLayout>
-
-        </FrameLayout>
 
         <HorizontalScrollView android:id="@+id/switcher_scroller"
                               android:layout_width="match_parent"
                               android:layout_height="match_parent"
                               android:scrollbars="none">
 
+               <!--contains  the  tabs being opened by the user -->
             <LinearLayout android:id="@+id/switcher_container"
                           android:orientation="horizontal"
+                          android:gravity="center"
                           android:layout_width="wrap_content"
                           android:layout_height="match_parent">
             </LinearLayout>
@@ -95,13 +38,13 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/blue_900">
-<!-- android:background="@color/background_dark"-->
+
         <RelativeLayout android:id="@+id/main_omnibox"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/layout_height_48dp"
                         android:minHeight="@dimen/layout_height_48dp"
                        android:background="@color/blue_500">
-<!--  android:background="@color/background_dark"-->
+
             <ImageButton
                 android:layout_marginLeft="@dimen/layout_margin_4dp"
                 android:layout_marginRight="@dimen/layout_margin_4dp"
@@ -177,7 +120,6 @@
                              android:layout_centerInParent="true"
                              android:layout_alignParentRight="true"
                              android:layout_margin="@dimen/layout_margin_4dp"
-                             android:visibility="gone"
                              android:src="@drawable/refresh_selector"
                              android:background="@color/transparent">
                 </ImageButton>
@@ -227,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/layout_height_48dp"
                         android:minHeight="@dimen/layout_height_48dp"
-                        android:background="@color/background_dark"
+                        android:background="@color/blue_500"
                         android:visibility="gone">
 
             <LinearLayout android:id="@+id/main_search_left"
@@ -316,7 +258,12 @@
                 android:layout_height="200dp"></LinearLayout>
         </FrameLayout>
 
+
+
+
     </LinearLayout>
+
+
 
 </com.mojodigi.ninjafox.View.SwitcherPanel>
 

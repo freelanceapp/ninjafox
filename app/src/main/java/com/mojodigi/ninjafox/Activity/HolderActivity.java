@@ -13,8 +13,8 @@ import android.widget.ListView;
 import com.mojodigi.ninjafox.R;
 import com.mojodigi.ninjafox.Database.Record;
 import com.mojodigi.ninjafox.Service.HolderService;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
-import com.mojodigi.ninjafox.Unit.IntentUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
+import com.mojodigi.ninjafox.Unit.IntentUtility;
 import com.mojodigi.ninjafox.Unit.RecordUnit;
 import com.mojodigi.ninjafox.View.DialogAdapter;
 import com.mojodigi.ninjafox.View.jmmContextWrapper;
@@ -139,15 +139,15 @@ public class HolderActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent toActivity = new Intent(HolderActivity.this, BrowserActivity.class);
-                        toActivity.putExtra(IntentUnit.OPEN, first.getURL());
+                        Intent toActivity = new Intent(HolderActivity.this, MainActivity.class);
+                        toActivity.putExtra(IntentUtility.OPEN, first.getURL());
                         startActivity(toActivity);
                         break;
                     case 1:
-                        BrowserUnit.copyURL(HolderActivity.this, first.getURL());
+                        BrowserUtility.copyURL(HolderActivity.this, first.getURL());
                         break;
                     case 2:
-                        IntentUnit.share(HolderActivity.this, first.getTitle(), first.getURL());
+                        IntentUtility.share(HolderActivity.this, first.getTitle(), first.getURL());
                         break;
                     default:
                         break;

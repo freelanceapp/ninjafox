@@ -18,9 +18,22 @@ import java.util.Set;
 
 
 
+
+/*
+*
+*
+* // tks
+*
+* https://www.hidroh.com/2016/05/19/hacking-up-ad-blocker-android/
+* //  comlpete guide to  adblock  implementation;
+*
+*
+*
+* */
+
 public class AdBlock {
-    private static final String FILE = "hosts.txt";
-    private static final Set<String> hosts = new HashSet<>();
+    private static final String FILE = "add_providers.txt";
+    private static final Set<String> addHosts = new HashSet<>();
     private static final List<String> whitelist = new ArrayList<>();
     private static final Locale locale = Locale.getDefault();
 
@@ -33,7 +46,7 @@ public class AdBlock {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(manager.open(FILE)));
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        hosts.add(line.toLowerCase(locale));
+                        addHosts.add(line.toLowerCase(locale));
                     }
                 } catch (IOException i) {}
             }
@@ -72,7 +85,7 @@ public class AdBlock {
     public AdBlock(Context context) {
         this.context = context;
 
-        if (hosts.isEmpty()) {
+        if (addHosts.isEmpty()) {
             loadHosts(context);
         }
         loadDomains(context);
@@ -94,7 +107,7 @@ public class AdBlock {
         } catch (URISyntaxException u) {
             return false;
         }
-        return hosts.contains(domain.toLowerCase(locale));
+        return addHosts.contains(domain.toLowerCase(locale));
     }
 
     public synchronized void addDomain(String domain) {

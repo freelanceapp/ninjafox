@@ -1,15 +1,17 @@
 <RelativeLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <LinearLayout android:id="@+id/main_view"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:background="@color/blue_900">
         <!-- android:background="@color/background_dark"-->
         <RelativeLayout android:id="@+id/main_omnibox"
             android:layout_width="match_parent"
+
             android:layout_height="@dimen/layout_height_48dp"
             android:minHeight="@dimen/layout_height_48dp"
             android:background="@color/blue_500">
@@ -29,12 +31,11 @@
             <!-- create  tab textview  here -->
             <TextView
                 android:text="1"
-                android:id="@+id/addTab"
+                android:id="@+id/omniTabCount"
                 android:textSize="@dimen/text_size_18sp"
                 android:textColor="@color/white"
                 android:padding="@dimen/padding_4dp"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_centerInParent="true"
                 android:layout_toLeftOf="@+id/main_omnibox_overflow"
                 android:layout_marginLeft="@dimen/layout_margin_4dp"
@@ -62,7 +63,7 @@
                 android:minHeight="@dimen/layout_height_36dp"
                 android:layout_toRightOf="@+id/main_omnibox_home"
                 android:layout_centerInParent="true"
-                android:layout_toLeftOf="@id/addTab"
+                android:layout_toLeftOf="@id/omniTabCount"
                 android:layout_marginLeft="@dimen/layout_margin_4dp"
                 android:layout_marginRight="@dimen/layout_margin_4dp"
                 android:focusable="true"
@@ -90,7 +91,6 @@
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="@dimen/layout_margin_4dp"
-                    android:visibility="gone"
                     android:src="@drawable/refresh_selector"
                     android:background="@color/transparent">
                 </ImageButton>
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_48dp"
             android:minHeight="@dimen/layout_height_48dp"
-            android:background="@color/background_dark"
+            android:background="@color/blue_500"
             android:visibility="gone">
 
             <LinearLayout android:id="@+id/main_search_left"
@@ -230,4 +230,6 @@
         </FrameLayout>
 
     </LinearLayout>
+
+
 </RelativeLayout>

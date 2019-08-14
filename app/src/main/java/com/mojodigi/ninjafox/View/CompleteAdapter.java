@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.mojodigi.ninjafox.Database.Record;
 import com.mojodigi.ninjafox.R;
-import com.mojodigi.ninjafox.Unit.BrowserUnit;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 
 
 import java.util.ArrayList;
@@ -185,7 +185,7 @@ public class CompleteAdapter extends BaseAdapter implements Filterable {
         CompleteItem item = resultList.get(position);
         holder.titleView.setText(item.getTitle());
         if (item.getURL() != null) {
-            holder.urlView.setText(Html.fromHtml(BrowserUnit.urlWrapper(item.getURL())), TextView.BufferType.SPANNABLE);
+            holder.urlView.setText(Html.fromHtml(BrowserUtility.urlWrapper(item.getURL())), TextView.BufferType.SPANNABLE);
         } else {
             holder.urlView.setText(item.getURL());
         }

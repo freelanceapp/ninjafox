@@ -12,10 +12,9 @@ import com.mojodigi.ninjafox.Browser.BrowserController;
 import com.mojodigi.ninjafox.R;
 
 
-
-
 public class Album {
     private Context context;
+
 
     private View albumView;
     public View getAlbumView() {
@@ -28,12 +27,24 @@ public class Album {
     }
 
     private TextView albumTitle;
+    private  boolean isIncogTab;
+
+    public boolean getIsIncogTab() {
+        return isIncogTab;
+    }
+    public void setIncogTab(boolean incogTab) {
+        isIncogTab = incogTab;
+    }
+
+
     public String getAlbumTitle() {
         return albumTitle.getText().toString();
     }
     public void setAlbumTitle(String title) {
         albumTitle.setText(title);
     }
+
+
 
     private AlbumController albumController;
     public void setAlbumController(AlbumController albumController) {
@@ -74,6 +85,7 @@ public class Album {
         albumView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // fires on click of tab;
                 browserController.showAlbum(albumController, false, false, false);
             }
         });
@@ -89,10 +101,12 @@ public class Album {
         albumCover = (ImageView) albumView.findViewById(R.id.album_cover);
         albumTitle = (TextView) albumView.findViewById(R.id.album_title);
         albumTitle.setText(context.getString(R.string.album_untitled));
+
+
     }
 
     public void activate() {
-        albumView.setBackgroundResource(R.drawable.album_shape_blue);
+        albumView.setBackgroundResource(R.drawable.album_shape_white);
     }
 
     public void deactivate() {

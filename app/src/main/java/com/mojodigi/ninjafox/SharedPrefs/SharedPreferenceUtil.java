@@ -24,6 +24,7 @@ public class SharedPreferenceUtil {
      * @param context context of Activity or Service
      * @return Returns instance of SharedPreferenceUtils
      */
+
     public static synchronized SharedPreferenceUtil getInstance(Context context) {
 
         if (mSharedPreferenceUtils == null) {
@@ -38,6 +39,7 @@ public class SharedPreferenceUtil {
      * @param key   key of preference
      * @param value value for that key
      */
+
     public void setValue(String key, String value) {
         mSharedPreferencesEditor.putString(key, value);
         mSharedPreferencesEditor.commit();
@@ -140,7 +142,6 @@ public class SharedPreferenceUtil {
             mSharedPreferencesEditor.commit();
         }
     }
-
 
     /**
      * Clears all the preferences stored

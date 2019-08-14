@@ -18,6 +18,10 @@
     <string name="album_title_home">
         Home
     </string>
+
+    <string  translatable="false" name="album_title_home_incog">
+        Home(Incognito)
+    </string>
     <string name="album_untitled">
         Untitled
     </string>
@@ -124,6 +128,9 @@
     <string name="main_menu_save">
         Save
     </string>
+    <string translatable="false" name="main_menu_download">
+        Download
+    </string>
     <string name="main_omnibox_input_hint">
         Search or type URL
     </string>
@@ -134,6 +141,15 @@
        Custom content will appear here
     </string>
 
+    <string  translatable="false" name="incogTextHeading">
+       You\'ve gone incognito
+    </string>
+  <string translatable="false" name="incogdesc">
+     Now you can browse privately,and other people who use this device won\'t see your activity. \nHowever,downloads and bookmarks will be saved.\nNinja fox won\'t save the following information:\n
+      - Your browsing history\n
+      - Cookies and site data\n
+      - Information entered in forms
+  </string>
     <!-- Notification -->
     <string name="notification_content_holder">
         Click to View Pages
@@ -162,6 +178,10 @@
     <string name="setting_label">
         Settings
     </string>
+    <!--download settings-->
+    <string name="download_settings_label" translatable="false">Download</string>
+    <!--download settings-->
+
     <!-- Browser setting -->
     <string name="setting_title_browser">
         Browser Settings
@@ -373,9 +393,26 @@
     <string name="setting_title_others">
         Others
     </string>
+    <string name="setting_title_about" translatable="false">
+        About
+    </string>
+    <string name="setting_title_download" translatable="false">
+        Downlaods
+    </string>
+
     <!-- Version -->
     <string name="setting_title_version">
         Version
+    </string>
+    <!--contactEmail-->
+    <string name="setting_title_contact" translatable="false">
+    Contact
+    </string>
+    <string name="privacy_policy" translatable="false">
+        Privacy policy
+    </string>
+    <string name="url_privacy" translatable="false">
+        http://www.google.com
     </string>
     <!-- License -->
     <string name="setting_title_license">
@@ -533,4 +570,13 @@
         Add
     </string>
 
+
+    <string name="download_setting_both" translatable="false">Both</string>
+    <string name="download_setting_wifi" translatable="false">Wifi only</string>
+    <string name="download_setting_mobile" translatable="false">Mobile data only</string>
+<string name="donwload_setiings_msg_wifi" translatable="false">your current settings does not allow download. please enable wifi</string>
+<string name="donwload_setiings_msg_mobile" translatable="false">your current settings does not allow download. please enable mobile data</string>
+<string name="download_dialog_title" translatable="false">Download files on Data/Wifi</string>
+
+    <string translatable="false" name="gray_900">#212121</string>
 </resources>
