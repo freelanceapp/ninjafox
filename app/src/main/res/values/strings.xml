@@ -372,6 +372,7 @@
     <string name="setting_title_passwords">
         Passwords
     </string>
+    <string name="settings_clear_data" translatable="false">Clear data</string>
     <string name="setting_summary_passwords">
         Save Passwords
     </string>
@@ -579,4 +580,15 @@
 <string name="download_dialog_title" translatable="false">Download files on Data/Wifi</string>
 
     <string translatable="false" name="gray_900">#212121</string>
+
+    <string name="menu_new_tab" translatable="false">New tab</string>
+    <string name="menu_new_incog_tab" translatable="false">New incog tab</string>
+    <string name="menu_new_find_in_page" translatable="false">Find in page</string>
+    <string name="menu_new_bookmark" translatable="false">Bookmarks</string>
+    <string name="menu_new_history" translatable="false">History</string>
+    <string name="menu_new_downloads" translatable="false">Downloads</string>
+    <string name="menu_new_setting" translatable="false">Settings</string>
+    <string name="menu_new_share" translatable="false">Share</string>
+    <string name="menu_new_delete" translatable="false">Delete</string>
+
 </resources>

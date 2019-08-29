@@ -2,35 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_NewTab"
-        android:title="New tab" />
+        android:id="@+id/menu_new_atb"
+        android:title="@string/main_menu_new_tab" />
 
     <item
-        android:id="@+id/menu_NewIncongnitoTab"
-        android:title="New incognito tab" />
+        android:id="@+id/menu_copy_link"
+        android:title="@string/main_menu_copy_link" />
 
     <item
-        android:id="@+id/menu_FindinPage"
-        android:title="Find in page" />
+        android:id="@+id/menu_share_link"
+        android:title="@string/menu_new_share" />
 
     <item
-        android:id="@+id/menu_BookMarks"
-        android:title="Bookmarks" />
-
-    <item
-        android:id="@+id/menu_History"
-        android:title="History" />
-
-    <item
-        android:id="@+id/menu_DownLoads"
-        android:title="Downloads" />
-
-
-
-    <item
-        android:id="@+id/menu_Settings"
-        android:title="Settings" />
-
-
+        android:id="@+id/menu_share_delete"
+        android:title="@string/menu_new_delete" />
 
 </menu>

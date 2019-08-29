@@ -14,11 +14,21 @@
 
     <PreferenceCategory android:title="@string/setting_title_data">
 
-        <CheckBoxPreference android:key="@string/sp_passwords"
+        <!-- for the time being not required-->
+        <!--<CheckBoxPreference android:key="@string/sp_passwords"
             android:defaultValue="true"
             android:title="@string/setting_title_passwords"
             android:summary="@string/setting_summary_passwords">
-        </CheckBoxPreference>
+        </CheckBoxPreference>-->
+        <!-- for the time being not required-->
+<!--android:positiveButtonText="@string/sp_clear_data"-->
+        <MultiSelectListPreference android:key="@string/sp_clear_data" android:title="@string/settings_clear_data"
+            android:entries="@array/entries_clear_data"
+            android:defaultValue="@array/values_clear_data_default"
+            android:positiveButtonText="@string/settings_clear_data"
+            android:entryValues="@array/values_clear_data" >
+        </MultiSelectListPreference>
+
 
     </PreferenceCategory>
 
@@ -32,6 +42,7 @@
             android:defaultValue="Both"
             android:title="@string/download_dialog_title"
             android:summary="Both"
+
             android:entries="@array/setting_entries_download"
             android:entryValues="@array/setting_values_downlaod">
         </ListPreference>

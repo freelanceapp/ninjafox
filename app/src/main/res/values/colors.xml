@@ -36,6 +36,11 @@
     <color name="hint">#B8B8B8</color>
     <color name="dividers">#DADADA</color>
     <color name="incog_back">#323639</color>
-    <color name="navigation_back">#666b6e</color>
+
+    <color name="actionbar_wood">#ffb3aa86</color>
+
+    <color name="screen_background">#eae9eb</color>
+    <color name="navigation_back">#EBEBED</color>
+    <color name="clear_all_back_color">#e9e9ea</color>
 
 </resources>

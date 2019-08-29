@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.mojodigi.ninjafox.View.jmmRelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mojodigi.ninjafox.View.jmmRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <android.support.v7.widget.CardView
+        android:id="@+id/toolbar"
+        app:cardElevation="@dimen/padding_4dp"
+        app:cardBackgroundColor="@color/clear_all_back_color"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="50dp">
+        <LinearLayout
+            android:background="@drawable/ripple"
+            android:id="@+id/backButton"
+            android:padding="@dimen/layout_margin_2dp"
+            android:gravity="left"
+            android:layout_gravity="left|center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/ic_chevron_left_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:gravity="center"
+                android:id="@+id/title_txt"
+                android:textSize="@dimen/text_size_18sp"
+                android:text="@string/menu_new_history"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <ListView android:id="@+id/record_list"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/clear_data_view"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:drawSelectorOnTop="true">
@@ -24,5 +55,27 @@
               android:ellipsize="none"
               android:visibility="gone">
     </TextView>
+
+   <android.support.v7.widget.CardView
+       android:id="@+id/clear_data_view"
+       android:layout_alignParentBottom="true"
+       app:cardElevation="@dimen/padding_16dp"
+       app:cardBackgroundColor="@color/white"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:id="@+id/clearAllText"
+           android:padding="@dimen/padding_8dp"
+
+           android:textColor="@color/black"
+           android:text="  CLEAR ALL  "
+           android:textSize="@dimen/text_size_16sp"
+           android:layout_margin="@dimen/layout_margin_4dp"
+           android:background="@drawable/layout_border"
+           android:layout_gravity="center"
+           android:layout_alignParentBottom="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+   </android.support.v7.widget.CardView>
 
 </com.mojodigi.ninjafox.View.jmmRelativeLayout>

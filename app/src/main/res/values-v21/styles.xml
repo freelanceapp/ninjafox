@@ -13,7 +13,10 @@
         <item name="android:drawSelectorOnTop">true</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
         <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewStyle</item>
+
     </style>
+
+
 
     <style name="ReadabilityActivityTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorAccent">@color/blue_500</item>

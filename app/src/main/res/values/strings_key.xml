@@ -90,6 +90,13 @@
         SP_DOWNLOAD
     </string>
 
+    <!--clear  data settings-->
+
+    <string name="sp_clear_data" translatable="false">
+        SP_CLEAR_DATA
+    </string>
+    <!--clear  data settings-->
+
     <!-- Readability -->
     <string name="sp_readability">
         SP_READABILITY_9

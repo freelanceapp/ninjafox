@@ -2,53 +2,87 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/white">
-
-    <RelativeLayout android:layout_width="match_parent"
+<RelativeLayout
+    android:layout_marginTop="@dimen/layout_margin_8dp"
+    android:layout_marginBottom="@dimen/layout_margin_8dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginLeft="@dimen/layout_margin_8dp"
+        android:src="@drawable/ic_web"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/webIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+    <RelativeLayout android:id="@+id/title_layout" android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/webIcon" android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/layout_margin_12dp"
                     android:layout_marginLeft="@dimen/layout_margin_16dp"
-                    android:layout_marginRight="@dimen/layout_margin_16dp">
+                   >
 
-        <com.mojodigi.ninjafox.CustomControl.RelativeTimeTextView
-                android:id="@+id/record_item_time"
+        <ImageView
+                android:background="@drawable/ripple"
+                android:id="@+id/menuIcon"
+                  android:paddingRight="@dimen/layout_margin_8dp"
+                   android:paddingLeft="@dimen/layout_margin_8dp"
+                 android:paddingTop="@dimen/layout_margin_4dp"
+                 android:paddingBottom="@dimen/layout_margin_4dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/hint"
-                android:textSize="@dimen/text_size_12sp"
-                android:singleLine="true"
-                android:ellipsize="end">
-        </com.mojodigi.ninjafox.CustomControl.RelativeTimeTextView>
+                android:src="@drawable/ic_menu">
+        </ImageView>
+
 
         <TextView android:id="@+id/record_item_title"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:layout_alignParentLeft="true"
+                 android:layout_alignParentLeft="true"
                   android:layout_toLeftOf="@id/record_item_time"
                   android:layout_marginRight="@dimen/layout_margin_8dp"
                   android:textColor="@color/text"
                   android:textSize="@dimen/text_size_16sp"
+                 android:text="fqewfqfqwf"
                   android:singleLine="true"
                   android:ellipsize="end">
         </TextView>
+        <TextView   android:layout_below="@+id/record_item_title"
+            android:id="@+id/record_item_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/layout_margin_16dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_14sp"
+            android:text="vasvasvaasvasvasvas"
+            android:singleLine="true"
+            android:ellipsize="end">
+        </TextView>
+
+        <!--here -->
+        <com.mojodigi.ninjafox.CustomControl.RelativeTimeTextView
+            android:id="@+id/record_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/layout_margin_8dp"
+            android:textColor="@color/hint"
+            android:textSize="@dimen/text_size_12sp"
+            android:layout_below="@+id/record_item_url"
+            android:text="2 hour ago"
+            android:singleLine="true"
+            android:layout_marginRight="@dimen/layout_margin_16dp"
+            android:ellipsize="end">
+        </com.mojodigi.ninjafox.CustomControl.RelativeTimeTextView>
 
     </RelativeLayout>
 
-    <TextView android:id="@+id/record_item_url"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="@dimen/layout_margin_12dp"
-              android:layout_marginLeft="@dimen/layout_margin_16dp"
-              android:layout_marginRight="@dimen/layout_margin_16dp"
-              android:textColor="@color/text_secondary"
-              android:textSize="@dimen/text_size_14sp"
-              android:singleLine="true"
-              android:ellipsize="end">
-    </TextView>
 
+</RelativeLayout>
 </LinearLayout>

@@ -4,7 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/screen_background">
 
     <com.mojodigi.ninjafox.org.developer.dynamicgrid.DynamicGridView
         android:id="@+id/home_grid"
@@ -24,7 +24,7 @@
     <TextView android:id="@+id/home_about_blank"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-             android:layout_centerInParent="true"
+              android:layout_centerInParent="true"
               android:layout_margin="@dimen/layout_margin_8dp"
               android:gravity="center"
               android:text="@string/main_about_blank"
@@ -32,12 +32,108 @@
               android:textSize="@dimen/text_size_14sp"
               android:visibility="gone">
     </TextView>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/contentPager"
-        android:background="@color/blue_200"
+
+    <!-- add oneclick  access  controls  here  like  facebook  gmail google etc -->
+
+<LinearLayout
+    android:gravity="center"
+    android:background="@color/screen_background"
+
+    android:orientation="vertical"
+    android:id="@+id/socialLayout"
+    android:layout_alignParentTop="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="200dp"></android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content">
+    <ImageView
+        android:background="@drawable/ripple"
+        android:id="@+id/facebook"
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/facebook_png"
+        >
+
+    </ImageView>
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/twitter"
+            android:layout_marginRight="@dimen/layout_margin_8dp"
+            android:layout_marginLeft="@dimen/layout_margin_8dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/twitter_png"></ImageView>
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/isntagram"
+            android:layout_marginRight="@dimen/layout_margin_8dp"
+            android:layout_marginLeft="@dimen/layout_margin_8dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/insta_png"
+            ></ImageView>
+
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/quora"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/quora_png"
+            ></ImageView>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/google"
+            android:layout_width="60dp"
+            android:layout_marginRight="@dimen/layout_margin_8dp"
+            android:layout_marginLeft="@dimen/layout_margin_8dp"
+            android:layout_height="60dp"
+            android:src="@drawable/google_png"
+            ></ImageView>
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/youtube"
+            android:layout_marginRight="@dimen/layout_margin_8dp"
+            android:layout_marginLeft="@dimen/layout_margin_8dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/youtube_png"
+            ></ImageView>
+
+        <ImageView
+            android:background="@drawable/ripple"
+            android:id="@+id/khulasaNews"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/khulasa_png"
+            ></ImageView>
 
 
-<!-- android:text="@string/main_about_blank"-->
+    </LinearLayout>
+</LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/socialLayout"
+        android:id="@+id/contentPager"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+
+
+
+    <include  layout="@layout/bottom_nav_bar"></include>
+
+
 </com.mojodigi.ninjafox.View.jmmRelativeLayout>

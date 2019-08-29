@@ -1,69 +1,57 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout android:id="@+id/switcher_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_500">
+        <!--           blue_300   -->
+
+
+        <HorizontalScrollView android:id="@+id/switcher_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <!--contains  the  tabs being opened by the user -->
+            <LinearLayout android:id="@+id/switcher_container"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+    <!--parent  layout for web content-->
 
     <LinearLayout android:id="@+id/main_view"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screen_background">
 
-        android:background="@color/blue_900">
-        <!-- android:background="@color/background_dark"-->
         <RelativeLayout android:id="@+id/main_omnibox"
             android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/padding_16dp"
+            android:layout_marginLeft="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            android:layout_marginBottom="@dimen/padding_16dp"
+            android:layout_height="@dimen/layout_height_45dp"
+            >
 
-            android:layout_height="@dimen/layout_height_48dp"
-            android:minHeight="@dimen/layout_height_48dp"
-            android:background="@color/blue_500">
-            <!--  android:background="@color/background_dark"-->
-            <ImageButton
-                android:layout_marginLeft="@dimen/layout_margin_4dp"
-                android:layout_marginRight="@dimen/layout_margin_4dp"
-                android:src="@mipmap/ic_action_home"
-                android:id="@+id/main_omnibox_home"
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center"
-                android:background="@color/transparent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <!-- create  tab textview  here -->
-            <TextView
-                android:text="1"
-                android:id="@+id/omniTabCount"
-                android:textSize="@dimen/text_size_18sp"
-                android:textColor="@color/white"
-                android:padding="@dimen/padding_4dp"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/main_omnibox_overflow"
-                android:layout_marginLeft="@dimen/layout_margin_4dp"
-                android:background="@drawable/border_tab_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageButton android:id="@+id/main_omnibox_overflow"
-                android:contentDescription="@null"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/layout_margin_4dp"
-                android:layout_gravity="center"
-                android:src="@drawable/overflow_selector"
-                android:background="@color/transparent">
-            </ImageButton>
-
-            <!--android:visibility="gone"-->
-
+            <!-- android:minHeight="@dimen/layout_height_45dp"-->
             <RelativeLayout android:id="@+id/main_omnibox_url"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_height_36dp"
-                android:minHeight="@dimen/layout_height_36dp"
+                android:layout_height="@dimen/layout_height_45dp"
+                android:minHeight="@dimen/layout_height_45dp"
                 android:layout_toRightOf="@+id/main_omnibox_home"
                 android:layout_centerInParent="true"
-                android:layout_toLeftOf="@id/omniTabCount"
                 android:layout_marginLeft="@dimen/layout_margin_4dp"
                 android:layout_marginRight="@dimen/layout_margin_4dp"
                 android:focusable="true"
@@ -71,13 +59,24 @@
                 android:background="@drawable/round_corner_shape_white">
 
 
+                <ImageButton android:id="@+id/main_omnibox_app_logo"
+                    android:contentDescription="@null"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/ic_ninja_fox_logo"
+                    android:background="@color/transparent">
+                </ImageButton>
+
                 <ImageButton android:id="@+id/main_omnibox_bookmark"
                     android:contentDescription="@null"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_margin="@dimen/layout_margin_4dp"
+                    android:layout_marginRight="@dimen/layout_margin_4dp"
+                    android:layout_marginLeft="-14dp"
+                    android:layout_toRightOf="@+id/main_omnibox_app_logo"
                     android:src="@drawable/bookmark_selector_dark"
                     android:background="@color/transparent">
                 </ImageButton>
@@ -118,21 +117,31 @@
                 </AutoCompleteTextView>
 
 
-                <!--@drawable/search_box_shape-->
 
 
+                <ProgressBar android:id="@+id/main_progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height_4dp"
+                    android:maxHeight="@dimen/layout_height_4dp"
+                    android:layout_alignParentBottom="true"
+                    android:indeterminate="false"
+                    android:layout_marginLeft="@dimen/layout_margin_16dp"
+                    android:layout_marginRight="@dimen/layout_margin_16dp"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/progress_bar_layer_list">
+                </ProgressBar>
 
             </RelativeLayout>
 
-            <ProgressBar android:id="@+id/main_progress_bar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_height_2dp"
-                android:maxHeight="@dimen/layout_height_2dp"
-                android:layout_alignParentBottom="true"
-                android:indeterminate="false"
-                android:indeterminateOnly="false"
-                android:progressDrawable="@drawable/progress_bar_layer_list">
-            </ProgressBar>
+            <!-- <ProgressBar android:id="@+id/main_progress_bar"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/layout_height_2dp"
+             android:maxHeight="@dimen/layout_height_2dp"
+             android:layout_alignParentBottom="true"
+             android:indeterminate="false"
+             android:indeterminateOnly="false"
+             android:progressDrawable="@drawable/progress_bar_layer_list">
+         </ProgressBar>-->
 
         </RelativeLayout>
 
@@ -140,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_48dp"
             android:minHeight="@dimen/layout_height_48dp"
-            android:background="@color/blue_500"
+            android:background="@color/screen_background"
             android:visibility="gone">
 
             <LinearLayout android:id="@+id/main_search_left"
@@ -217,19 +226,19 @@
             android:visibility="gone">
         </Button>
 
-        <FrameLayout android:id="@+id/main_content"
+        <RelativeLayout android:id="@+id/main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
+
             <LinearLayout
                 android:background="@color/blue_900"
                 android:orientation="vertical"
                 android:id="@+id/contentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"></LinearLayout>
-        </FrameLayout>
+        </RelativeLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>

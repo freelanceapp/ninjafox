@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mojodigi.ninjafox.Activity.MainActivity;
 import com.mojodigi.ninjafox.Browser.AlbumController;
 import com.mojodigi.ninjafox.Browser.BrowserController;
 import com.mojodigi.ninjafox.R;

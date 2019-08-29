@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.util.AndroidException;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -186,7 +187,14 @@ public class jmmWebView extends WebView implements AlbumController {
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(context.getString(R.string.sp_javascript), true));
         webSettings.setGeolocationEnabled(sp.getBoolean(context.getString(R.string.sp_location), true));
         webSettings.setSupportMultipleWindows(sp.getBoolean(context.getString(R.string.sp_multiple_windows), false));
+        boolean st=sp.getBoolean(context.getString(R.string.sp_passwords), true);
+
+        System.out.print(""+st);
         webSettings.setSaveFormData(sp.getBoolean(context.getString(R.string.sp_passwords), true));
+        webSettings.setSavePassword(sp.getBoolean(context.getString(R.string.sp_passwords), true));
+
+
+
 
         boolean textReflow = sp.getBoolean(context.getString(R.string.sp_text_reflow), true);
         if (textReflow) {
@@ -387,7 +395,7 @@ public class jmmWebView extends WebView implements AlbumController {
                     action.open(true);
                     // adds the url to history
                     action.addHistory(new Record(getTitle(), getUrl(), System.currentTimeMillis()));
-                    jmmToast.show(context, "added to history");
+                    //jmmToast.show(context, "added to history");
                     action.close();
                     browserController.updateAutoComplete();
                 }

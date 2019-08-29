@@ -90,7 +90,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
 
         String cookies = CookieManager.getInstance().getCookie(url);
-        System.out.print(""+cookies);
+        System.out.print(""+cookies)    ;
 
 
     }

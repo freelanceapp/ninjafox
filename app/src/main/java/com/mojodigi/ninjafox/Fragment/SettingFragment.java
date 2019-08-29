@@ -12,25 +12,35 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.util.Log;
 
 
 import com.mojodigi.ninjafox.Activity.DownLoadSettingActivity;
 import com.mojodigi.ninjafox.R;
 import com.mojodigi.ninjafox.Task.ExportWhitelistTask;
+import com.mojodigi.ninjafox.Unit.BrowserUtility;
 import com.mojodigi.ninjafox.View.jmmToast;
 
-public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener  {
 
 
 
 
-    private ListPreference downLoadPrefs;
+    private ListPreference mDownLoadPrefs;
+    private MultiSelectListPreference mClearDataPrefs; 
     private String[] downLoadEntries;
-
+    SharedPreferences settingsPrefs;
 
     private boolean spChange = false;
 
@@ -39,6 +49,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
     }
 
     private boolean dbChange = false;
+
+
 
     public boolean isDBChange() {
         return dbChange;
@@ -57,15 +69,14 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
     @Override
     public void onResume() {
         super.onResume();
+        settingsPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         final SharedPreferences sp = getPreferenceScreen().getSharedPreferences();
         sp.registerOnSharedPreferenceChangeListener(this);
-
-
-
-
-
+          /*download prefs*/
         downLoadEntries = getResources().getStringArray(R.array.setting_entries_download);
-        downLoadPrefs = (ListPreference) findPreference(getString(R.string.sp_download));
+        mDownLoadPrefs = (ListPreference) findPreference(getString(R.string.sp_download));
+
+
 
         String  dFlag = sp.getString(getString(R.string.sp_download), "0");
         String dSummary="";
@@ -86,9 +97,71 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         {
             dSummary=getString(R.string.download_setting_both);
         }
-        downLoadPrefs.setSummary(dSummary);
+        mDownLoadPrefs.setSummary(dSummary);
+
+        /*download prefs*/
 
 
+
+
+        /*clear  data  prefs*/
+
+        mClearDataPrefs=(MultiSelectListPreference)findPreference(getString(R.string.sp_clear_data));
+        mClearDataPrefs.setDefaultValue(getResources().getStringArray(R.array.values_clear_data_default));    /*  <!--initilize with  blank  array to  keep all unselected-->*/
+
+        mClearDataPrefs.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+
+                 int a =23_12;
+
+                Set<String> selected   = (Set) o;
+                System.out.print(""+selected);
+                Iterator<String> itr = selected.iterator();
+
+                while(itr.hasNext()){
+                    String selectedOption = itr.next();
+
+                    /**/
+                    switch (selectedOption)
+                    { case ("0"):  // form  data
+                        {
+                            BrowserUtility.clearFormData(getActivity());
+                            break;
+                        }
+                        case ("1"):
+                        {
+                            BrowserUtility.clearHistory(getActivity());
+                            break;
+                        }
+
+                        case ("2"):
+                        {
+                            BrowserUtility.clearBookmarks(getActivity());
+                            break;
+                        }
+                        case ("3"):
+                        {
+                            BrowserUtility.clearCookie(getActivity());
+                            break;
+                        }
+                        case ("4"):
+                        {
+                            BrowserUtility.clearCache(getActivity());
+                            break;
+                        }
+                    }
+                    /**/
+
+
+                }
+                jmmToast.show(getActivity(), R.string.toast_clear_successful);
+
+                return false;
+            }
+        });
+
+        /*clear  data  prefs*/
 
 
 
@@ -133,25 +206,23 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             }
         });
 
-
-        final CheckBoxPreference sp_passwords = (CheckBoxPreference) findPreference(getString(R.string.sp_passwords));
-
+ /* <!-- for the time being not required-->*/
+       /* final CheckBoxPreference sp_passwords = (CheckBoxPreference) findPreference(getString(R.string.sp_passwords));
         sp_passwords.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
 
                 if (sp_passwords.isChecked()) {
-                    jmmToast.show(getActivity(), "password saved disabled");
-
+                    setPassWordPrefs(false);
                     sp_passwords.setChecked(false);
                 } else {
-                    jmmToast.show(getActivity(), "password saved enabled");
+                    setPassWordPrefs(true);
                     sp_passwords.setChecked(true);
                 }
                 return false;
             }
-        });
-
+        });*/
+        /* <!-- for the time being not required-->*/
 
         // set  the download path  in perefrence screen;
         String dPath=  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
@@ -159,10 +230,15 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         if(dPath!=null  &&  dPathPrefs!=null) {
             dPathPrefs.setSummary(dPath);
         }
-
-
-
     }
+    private void setPassWordPrefs(boolean b) {
+
+        /*the  value  is  being used  in jmmWebView class for storing from data  of a website*/
+        SharedPreferences.Editor editor = settingsPrefs.edit();
+        editor.putBoolean(getString(R.string.sp_passwords),b);
+        editor.commit();
+    }
+
 
     @Override
     public void onPause() {
@@ -189,8 +265,10 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         spChange = true;
         if (key.equals(getString(R.string.sp_download))) {
             String summary = downLoadEntries[Integer.valueOf(sp.getString(key, "0"))];
-            downLoadPrefs.setSummary(summary);
+            mDownLoadPrefs.setSummary(summary);
         }
+
+
 
 
     }

@@ -110,19 +110,44 @@
         <item>3</item>
     </string-array>
 
+    <!--to be deletd-->
+
+
 
     <string-array name="setting_entries_download">
         <item>Both</item>
         <item>Wifi only</item>
         <item>Mobile data only</item>
     </string-array>
+
     <string-array name="setting_values_downlaod">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
 
-    <!--to be deletd-->
+
+    <string-array name="entries_clear_data">
+        <item>Form data</item>
+        <item>Search history</item>
+        <item>Bookmarks</item>
+        <item>Cookies</item>
+        <item>Cache</item>
+    </string-array>
+
+    <string-array name="values_clear_data">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!--initilize with  blank  array to  keep all unselected-->
+    <string-array name="values_clear_data_default">
+
+    </string-array>
+
 
 
 </resources>
