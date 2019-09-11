@@ -28,7 +28,7 @@
               android:textSize="@dimen/text_size_12sp"
               android:singleLine="true"
               android:ellipsize="none"
-              android:background="@color/blue_500">
+              android:background="@color/title_back_color">
 <!-- android:background="@color/shadow_dark">-->
 
     </TextView>

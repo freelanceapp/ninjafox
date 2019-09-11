@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.CheckBoxPreference;
@@ -22,6 +24,7 @@ import android.util.Log;
 
 
 import com.mojodigi.ninjafox.Activity.DownLoadSettingActivity;
+import com.mojodigi.ninjafox.Activity.FeedBackActivity;
 import com.mojodigi.ninjafox.R;
 import com.mojodigi.ninjafox.Task.ExportWhitelistTask;
 import com.mojodigi.ninjafox.Unit.BrowserUtility;
@@ -34,12 +37,12 @@ import java.util.Set;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener  {
 
+    private ListPreference mDownLoadPrefs,mShowImagesPrefs;
+    private MultiSelectListPreference mClearDataPrefs;
 
-
-
-    private ListPreference mDownLoadPrefs;
-    private MultiSelectListPreference mClearDataPrefs; 
-    private String[] downLoadEntries;
+    Preference feedback;
+    Preference default_browser;
+    private String[] downLoadEntries,showImagesEntries;
     SharedPreferences settingsPrefs;
 
     private boolean spChange = false;
@@ -74,7 +77,10 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         sp.registerOnSharedPreferenceChangeListener(this);
           /*download prefs*/
         downLoadEntries = getResources().getStringArray(R.array.setting_entries_download);
+        showImagesEntries = getResources().getStringArray(R.array.setting_entries_show_images);
+
         mDownLoadPrefs = (ListPreference) findPreference(getString(R.string.sp_download));
+        mShowImagesPrefs = (ListPreference) findPreference(getString(R.string.sp_show_images));
 
 
 
@@ -101,6 +107,33 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         /*download prefs*/
 
+
+
+        /*show images prefs*/
+
+        String  showFlag = sp.getString(getString(R.string.sp_show_images), "0");
+        String showSummary="";
+
+        if(showFlag.equalsIgnoreCase("0"))
+        {
+            showSummary=getString(R.string.show_image_always);
+        }
+        else if(showFlag.equalsIgnoreCase("1"))
+        {
+            showSummary=getString(R.string.show_image_wifi);
+        }
+        else if(showFlag.equalsIgnoreCase("2"))
+        {
+            showSummary=getString(R.string.show_image_blocked);
+        }
+        else
+        {
+            showSummary=getString(R.string.show_image_always);
+        }
+        mShowImagesPrefs.setSummary(showSummary);
+
+
+      /*show images prefs*/
 
 
 
@@ -230,6 +263,68 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         if(dPath!=null  &&  dPathPrefs!=null) {
             dPathPrefs.setSummary(dPath);
         }
+
+
+
+
+        /*feedback*/
+/*
+
+        feedback=findPreference(getString(R.string.setting_title_feedback));
+        feedback.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+
+               Intent feedbackIntent= new Intent(getActivity(), FeedBackActivity.class);
+               startActivity(feedbackIntent);
+
+                return false;
+
+            }
+        });
+
+*/
+
+        /*feedback*/
+
+
+        /*default broser*/
+        default_browser=findPreference(getString(R.string.setting_title_default_browser));
+        default_browser.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                                                                 @Override
+                                                                 public boolean onPreferenceClick(Preference preference) {
+
+                                                                     Intent defaultSetingsIntent = new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS);
+                                                                   //  startActivityForResult(callGPSSettingIntent,100);
+                                                                     startActivity(defaultSetingsIntent);
+                                                                     jmmToast.show(getActivity(), R.string.default_set_msg);
+
+                                                                     return false;
+                                                                 }
+                                                             });
+
+        default_browser.setSummary("Current default browser : "+getDefaultBrowserName());
+        /*default broser*/
+    }
+    private String getDefaultBrowserName()
+    {
+        Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://"));
+        ResolveInfo resolveInfo = getActivity().getPackageManager().resolveActivity(browserIntent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        // This is the default browser's packageName
+        String packageName = resolveInfo.activityInfo.packageName;
+
+        if(packageName.contains(".")) {
+            String[] pNameArr=packageName.split("\\.");
+             packageName=pNameArr[pNameArr.length-1];
+        }
+        else {
+            if (packageName.equalsIgnoreCase("android")) // in case no one is selected as default
+            {
+                packageName = "not set";
+            }
+        }
+        return packageName;
     }
     private void setPassWordPrefs(boolean b) {
 
@@ -267,6 +362,13 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             String summary = downLoadEntries[Integer.valueOf(sp.getString(key, "0"))];
             mDownLoadPrefs.setSummary(summary);
         }
+
+        if(key.equals(getString(R.string.sp_show_images)))
+        {
+            String summary = showImagesEntries[Integer.valueOf(sp.getString(key, "0"))];
+            mShowImagesPrefs.setSummary(summary);
+        }
+
 
 
 

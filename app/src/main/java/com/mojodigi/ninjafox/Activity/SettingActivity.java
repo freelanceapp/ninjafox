@@ -25,7 +25,7 @@ public class SettingActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue_500)));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.clear_all_back_color)));
         getActionBar().setDisplayHomeAsUpEnabled(true);
         fragment = new SettingFragment();
         getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();

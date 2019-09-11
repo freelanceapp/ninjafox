@@ -407,6 +407,77 @@ public class RecordAction {
         return list;
     }
 
+    public List<Record> listMostVisisted() {
+        List<Record> list = new ArrayList<>();
+
+        Cursor cursor = database.query(
+                RecordUnit.TABLE_HISTORY,
+                new String[] {
+                        RecordUnit.COLUMN_TITLE,
+                        RecordUnit.COLUMN_URL,
+                        RecordUnit.COLUMN_TIME,"COUNT("+RecordUnit.COLUMN_TITLE+")"
+                },
+                null,
+                null,
+                  RecordUnit.COLUMN_TITLE,
+                null,
+                "COUNT("+RecordUnit.COLUMN_TITLE+") desc"
+        );
+
+        if (cursor == null) {
+            return list;
+        }
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            if(list.size()<30) {
+                list.add(getRecord(cursor));
+                cursor.moveToNext();
+
+            }
+        }
+        cursor.close();
+
+        return list;
+    }
+
+    public List<Record> listMostRecent() {
+        List<Record> list = new ArrayList<>();
+
+        Cursor cursor = database.query(
+                RecordUnit.TABLE_HISTORY,
+                new String[] {
+                        RecordUnit.COLUMN_TITLE,
+                        RecordUnit.COLUMN_URL,
+                        RecordUnit.COLUMN_TIME
+                },
+                null,
+                null,
+                null,
+                null,
+                RecordUnit.COLUMN_TIME + " desc"
+        );
+
+        if (cursor == null) {
+            return list;
+        }
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            if(list.size()<30) {
+
+                list.add(getRecord(cursor));
+                cursor.moveToNext();
+                if (list.size()>29)
+                    break;
+            }
+        }
+        cursor.close();
+
+        return list;
+    }
+
+
     public List<Record> listHistory() {
         List<Record> list = new ArrayList<>();
 

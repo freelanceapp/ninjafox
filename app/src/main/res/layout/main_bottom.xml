@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout android:id="@+id/switcher_view"
-                    android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/background_dark">
 
@@ -17,8 +17,8 @@
                         android:layout_alignParentBottom="true"
                         android:minHeight="@dimen/layout_height_48dp">
 
-            <ImageButton android:id="@+id/switcher_setting"
-                         android:contentDescription="@null"
+            <ImageButton
+                android:contentDescription="@null"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:layout_centerInParent="true"
@@ -28,8 +28,8 @@
                          android:background="@color/transparent">
             </ImageButton>
 
-            <ImageButton android:id="@+id/switcher_add"
-                         android:contentDescription="@null"
+            <ImageButton
+                android:contentDescription="@null"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:layout_centerInParent="true"
@@ -48,8 +48,8 @@
                          android:background="@color/transparent">
             </ImageButton>
 
-            <ImageButton android:id="@+id/switcher_bookmarks"
-                         android:contentDescription="@null"
+            <ImageButton
+                android:contentDescription="@null"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:layout_toLeftOf="@id/switcher_history"
@@ -121,8 +121,8 @@
                          android:background="@color/transparent">
             </ImageButton>
 
-            <RelativeLayout android:id="@+id/main_omnibox_url"
-                            android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="match_parent"
                             android:layout_height="@dimen/layout_height_36dp"
                             android:minHeight="@dimen/layout_height_36dp"
                             android:layout_centerInParent="true"

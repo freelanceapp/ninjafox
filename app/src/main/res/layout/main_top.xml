@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout  android:id="@+id/switcher_view"
-                  android:orientation="vertical"
+    <LinearLayout
+        android:orientation="vertical"
                 android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:background="@color/blue_500">
-              <!--           blue_300   -->
+                  android:background="#2d2b2c">
+              <!--           blue_500   -->
 
 
         <HorizontalScrollView  android:id="@+id/switcher_scroller"
@@ -51,7 +51,7 @@
             >
 
 <!-- android:minHeight="@dimen/layout_height_45dp"-->
-            <RelativeLayout android:id="@+id/main_omnibox_url"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height_45dp"
                 android:minHeight="@dimen/layout_height_45dp"
@@ -153,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_48dp"
             android:minHeight="@dimen/layout_height_48dp"
-            android:background="@color/screen_background"
+            android:background="@color/black"
             android:visibility="gone">
 
             <LinearLayout android:id="@+id/main_search_left"
@@ -235,7 +235,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:background="@color/blue_900"
+                android:background="@color/screen_background"
                 android:orientation="vertical"
                 android:id="@+id/contentContainer"
                 android:layout_width="match_parent"

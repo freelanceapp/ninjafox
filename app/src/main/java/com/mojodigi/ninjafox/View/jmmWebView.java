@@ -182,7 +182,18 @@ public class jmmWebView extends WebView implements AlbumController {
         webSettings.setTextZoom(100);
         webSettings.setUseWideViewPort(true);
 
-        webSettings.setBlockNetworkImage(!sp.getBoolean(context.getString(R.string.sp_images), true));
+        String  showFlag = sp.getString(context.getString(R.string.sp_show_images), "0");
+        System.out.print(""+showFlag);
+         if(showFlag.equalsIgnoreCase("0"))  // always
+           webSettings.setBlockNetworkImage(false);
+         else if(showFlag.equalsIgnoreCase("1")) // over wifi
+             webSettings.setBlockNetworkImage(false);
+         else if(showFlag.equalsIgnoreCase("2")) // blocked
+             webSettings.setBlockNetworkImage(true);
+         else // in in rest  case if any
+             webSettings.setBlockNetworkImage(false);
+
+
         webSettings.setJavaScriptEnabled(sp.getBoolean(context.getString(R.string.sp_javascript), true));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(context.getString(R.string.sp_javascript), true));
         webSettings.setGeolocationEnabled(sp.getBoolean(context.getString(R.string.sp_location), true));

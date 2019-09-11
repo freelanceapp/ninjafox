@@ -96,6 +96,7 @@ popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 ((MainActivity)context).increaseTabCount();
                 ((MainActivity)context). setTabValue();
                 jmmToast.show(context, R.string.toast_new_tab_successful);
+
                 break;
             case R.id.menu_copy_link:
                 BrowserUtility.copyURL(context, record.getURL());

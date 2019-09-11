@@ -93,17 +93,6 @@
     <string name="dialog_content_ssl_error">
         當前站點的證書是不可信任的，需要繼續浏覽嗎？
     </string>
-    <string name="dialog_content_donation">
-        捐贈所得將會被用于：\n
-        - 提升開發環境配置。\n
-        - 提升開發者積極性。\n\n
-        所有的捐贈都會被認爲：\n
-        - 無償的，這意味著捐贈者不能命令或強迫開發者做捐贈者想做的任何事。\n
-        - 歸開發者所有。\n
-        - 捐贈者同意上述所有觀點。\n\n
-        支付寶：\n
-        matthewlee0725@gmail.com
-    </string>
     <string name="dialog_content_upload">
         由于某些原因我們無法在Android 4.X中上傳文件，但這項功能在Android 5.X中可以正常工作。這是多麽遺憾的一件事啊！
     </string>
@@ -119,9 +108,6 @@
     </string>
     <string name="main_menu_copy_link">
         拷貝鏈接
-    </string>
-    <string name="main_menu_save">
-        保存
     </string>
     <string name="main_omnibox_input_hint">
         搜索或輸入網址
@@ -139,18 +125,6 @@
     </string>
 
     <!-- Readability -->
-    <string name="readability_label">
-        閱讀模式
-    </string>
-    <string name="readability_menu_background">
-        背景
-    </string>
-    <string name="readability_menu_share">
-        分享
-    </string>
-    <string name="readability_empty">
-        閱讀模式加載失敗，原因可能是網絡連接問題，Readability令牌錯誤或者鏈接錯誤
-    </string>
 
     <!-- Search -->
     <string name="search_hint">
@@ -166,91 +140,13 @@
         浏覽
     </string>
     <!-- Search engine -->
-    <string name="setting_title_search_engine">
-        搜索引擎
-    </string>
-    <string name="setting_summary_search_engine_google">
-        Google
-    </string>
-    <string name="setting_summary_search_engine_duckduckgo">
-        DuckDuckGo
-    </string>
-    <string name="setting_summary_search_engine_startpage">
-        Startpage
-    </string>
-    <string name="setting_summary_search_engine_bing">
-        Bing
-    </string>
-    <string name="setting_summary_search_engine_baidu">
-        Baidu
-    </string>
-    <string name="setting_summary_search_engine_custom">
-        自定義
-    </string>
     <!-- Notification -->
-    <string name="setting_title_notification_priority">
-        通知欄優先級
-    </string>
-    <string name="setting_summary_notification_priority_default">
-        默認
-    </string>
-    <string name="setting_summary_notification_priority_high">
-        高
-    </string>
-    <string name="setting_summary_notification_priority_low">
-        低
-    </string>
     <!-- Omnibox position -->
-    <string name="setting_title_omnibox_position">
-        地址欄位置
-    </string>
-    <string name="setting_summary_omnibox_position_top">
-        頂部
-    </string>
-    <string name="setting_summary_omnibox_position_bottom">
-        底部
-    </string>
     <!-- Omnibox control -->
-    <string name="setting_title_omnibox_control">
-        地址欄控制
-    </string>
-    <string name="setting_summary_omnibox_control">
-        允許左右滑動地址欄切換標簽頁
-    </string>
     <!-- Volume key scroll -->
-    <string name="setting_title_volume_control">
-        音量鍵控制
-    </string>
-    <string name="setting_summary_vc_switch_tabs">
-        切換標簽頁
-    </string>
-    <string name="setting_summary_vc_scroll_webpage">
-        滾動網頁
-    </string>
-    <string name="setting_summary_vc_system_default">
-        系統默認
-    </string>
     <!-- Images -->
-    <string name="setting_title_images">
-        圖片
-    </string>
-    <string name="setting_summary_images">
-        允許網頁加載圖片
-    </string>
     <!-- Cookie -->
-    <string name="setting_title_cookie">
-        Cookie
-    </string>
-    <string name="setting_summary_cookie">
-        允許浏覽器接收Cookie
-    </string>
     <!-- JavaScript -->
-    <string name="setting_title_javascript">
-        JavaScript
-    </string>
-    <string name="setting_summary_javascript">
-        允許浏覽器運行JavaScript
-    </string>
     <!-- Location -->
     <string name="setting_title_location">
         地理位置
@@ -259,131 +155,32 @@
         允許網頁獲取地理位置
     </string>
     <!-- Multiple windows -->
-    <string name="setting_title_multiple_windows">
-        多標簽頁
-    </string>
-    <string name="setting_summary_multiple_windows">
-        允許網頁自動新建標簽頁
-    </string>
     <!-- Scroll bar -->
-    <string name="setting_title_scroll_bar">
-        滾動條
-    </string>
-    <string name="setting_summary_scroll_bar">
-        允許在網頁中顯示滾動條
-    </string>
     <!-- Text reflow -->
-    <string name="setting_title_text_reflow">
-        文本重排
-    </string>
-    <string name="setting_summary_text_reflow">
-        允許浏覽器對網頁文本進行調整
-    </string>
     <!-- User Agent -->
-    <string name="setting_title_user_agent">
-        浏覽器標識
-    </string>
-    <string name="setting_summary_user_agent_default">
-        默認
-    </string>
-    <string name="setting_summary_user_agent_desktop">
-        桌面
-    </string>
-    <string name="setting_summary_user_agent_custom">
-        自定義
-    </string>
     <!-- Rendering -->
-    <string name="setting_title_rendering">
-        渲染模式
-    </string>
-    <string name="setting_summary_rendering_default">
-        默認
-    </string>
-    <string name="setting_summary_rendering_grayscale">
-        灰度
-    </string>
-    <string name="setting_summary_rendering_inverted">
-        反轉
-    </string>
-    <string name="setting_summary_rendering_inverted_grayscale">
-        反轉灰度
-    </string>
     <!-- AdBlock setting -->
-    <string name="setting_title_adblock">
-        AdBlock
-    </string>
-    <string name="setting_summary_adblock">
-        允許運行AdBlock
-    </string>
-    <string name="setting_title_whitelist">
-        白名單
-    </string>
-    <string name="setting_summary_whitelist">
-        允許某些站點顯示廣告
-    </string>
-    <string name="setting_title_export_whilelist">
-        導出白名單
-    </string>
-    <string name="setting_title_import_whilelist">
-        導入白名單
-    </string>
     <string name="whilelist_filename">
         Ninja白名單
     </string>
     <!-- Readability setting -->
-    <string name="setting_title_readability">
-        閱讀模式
-    </string>
-    <string name="setting_title_token">
-        令牌
-    </string>
-    <string name="setting_summary_readability">
-        允許使用閱讀模式
-    </string>
-    <string name="setting_summary_token">
-        設置Readability令牌
-    </string>
     <!-- Data setting -->
     <string name="setting_title_data">
         數據
     </string>
     <!-- Passwords -->
-    <string name="setting_title_passwords">
-        密碼
-    </string>
-    <string name="setting_summary_passwords">
-        保存密碼
-    </string>
     <!-- Bookmarks -->
-    <string name="setting_title_export_bookmarks">
-        導出書簽
-    </string>
-    <string name="setting_title_import_bookmarks">
-        導入書簽
-    </string>
     <string name="bookmarks_filename">
         Ninja書簽
     </string>
     <!-- Clear -->
-    <string name="setting_title_clear_control">
-        清空數據
-    </string>
     <!-- Others setting -->
-    <string name="setting_title_others">
-        其他
-    </string>
     <!-- Version -->
     <string name="setting_title_version">
         版本號
     </string>
     <!-- License -->
-    <string name="setting_title_license">
-        協議
-    </string>
     <!-- Contact -->
-    <string name="setting_title_donation">
-        捐贈
-    </string>
 
     <!-- Toast -->
     <string name="toast_add_bookmark_successful">
@@ -404,17 +201,11 @@
     <string name="toast_add_whitelist_successful">
         添加域名成功
     </string>
-    <string name="toast_already_at_the_front">
-        已經是最前面了
-    </string>
     <string name="toast_already_exist_in_home">
         首頁中已存在該網址
     </string>
     <string name="toast_clear_successful">
         清空成功
-    </string>
-    <string name="toast_clear_failed">
-        清空失敗
     </string>
     <string name="toast_copy_successful">
         拷貝成功
@@ -430,9 +221,6 @@
     </string>
     <string name="toast_double_taps_quit">
         再點擊一下退出
-    </string>
-    <string name="toast_emoji">
-        (๑•̀ㅂ•́)و✧
     </string>
     <string name="toast_export_bookmarks_successful">
         導出的書簽文件位于：
@@ -466,12 +254,6 @@
     </string>
     <string name="toast_load_error">
         無法加載此網址
-    </string>
-    <string name="toast_load_in_background">
-        正在後台加載
-    </string>
-    <string name="toast_need_restart">
-        重啓浏覽器生效
     </string>
     <string name="toast_new_tab_successful">
         新建標簽成功
